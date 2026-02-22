@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  @apply bg-zinc-950 text-zinc-100 overflow-hidden;
+  font-family: var(--font-sans);
+}
+
+@utility brutalist-border {
+  border: 2px solid currentColor;
+  box-shadow: 4px 4px 0px 0px currentColor;
+}
+
+@utility brutalist-card {
+  @apply bg-zinc-900 brutalist-border p-4;
+}
+
+
