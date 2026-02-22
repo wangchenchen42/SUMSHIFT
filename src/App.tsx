@@ -13,6 +13,30 @@ const generateId = () => Math.random().toString(36).substring(2, 9);
 
 const getRandomValue = () => Math.floor(Math.random() * 9) + 1;
 
+const VALUE_COLORS: Record<number, string> = {
+  1: 'bg-blue-500/10 text-blue-400 border border-blue-500/20',
+  2: 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20',
+  3: 'bg-amber-500/10 text-amber-400 border border-amber-500/20',
+  4: 'bg-orange-500/10 text-orange-400 border border-orange-500/20',
+  5: 'bg-rose-500/10 text-rose-400 border border-rose-500/20',
+  6: 'bg-purple-500/10 text-purple-400 border border-purple-500/20',
+  7: 'bg-fuchsia-500/10 text-fuchsia-400 border border-fuchsia-500/20',
+  8: 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20',
+  9: 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20',
+};
+
+const SELECTED_COLORS: Record<number, string> = {
+  1: 'bg-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.4)]',
+  2: 'bg-emerald-500 text-white shadow-[0_0_20px_rgba(16,185,129,0.4)]',
+  3: 'bg-amber-500 text-white shadow-[0_0_20px_rgba(245,158,11,0.4)]',
+  4: 'bg-orange-500 text-white shadow-[0_0_20px_rgba(249,115,22,0.4)]',
+  5: 'bg-rose-500 text-white shadow-[0_0_20px_rgba(244,63,94,0.4)]',
+  6: 'bg-purple-500 text-white shadow-[0_0_20px_rgba(168,85,247,0.4)]',
+  7: 'bg-fuchsia-500 text-white shadow-[0_0_20px_rgba(217,70,239,0.4)]',
+  8: 'bg-indigo-500 text-white shadow-[0_0_20px_rgba(99,102,241,0.4)]',
+  9: 'bg-cyan-500 text-white shadow-[0_0_20px_rgba(6,182,212,0.4)]',
+};
+
 export default function App() {
   const [mode, setMode] = useState<GameMode | null>(null);
   const [grid, setGrid] = useState<Block[]>([]);
@@ -289,8 +313,8 @@ export default function App() {
                   className={`
                     relative flex items-center justify-center rounded-lg text-xl font-bold transition-all
                     ${isSelected 
-                      ? 'bg-emerald-500 text-black shadow-[0_0_20px_rgba(16,185,129,0.4)] z-10' 
-                      : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700'
+                      ? `${SELECTED_COLORS[block.value]} z-10` 
+                      : `${VALUE_COLORS[block.value]} hover:brightness-125`
                     }
                     ${block.row === 0 ? 'border-t-2 border-red-500/50' : ''}
                   `}
